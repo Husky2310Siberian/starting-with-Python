@@ -3,6 +3,9 @@ import datetime
 
 now = datetime.datetime.now()
 
-print("Current date and time is :" , now)
+selected_date = (12,2,22)
 
+print("Current date and time is :" , now)
 print(now.strftime("%Y/%m/%d %H:%M:%S"))
+
+print("The examination will start from: %i/ %i/ %i" % selected_date)

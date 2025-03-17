@@ -24,7 +24,38 @@ print("----------------")
 # Delete with pop
 removed_product = products.pop(3)
 print(f"Removed product {removed_product} " , products)
+print("----------------")
 
 # Delete with pop , for a non-existing item
 removed_product2 = products.pop(25 , "NOT FOUND")
 print(f"Removed product {removed_product} " , products)
+print("----------------")
+
+key , value = products.popitem()
+print(f"Removed key : {key} , Removed value : {value}")
+print(products)
+
+print("----------------")
+key_to_check = 2
+
+# find key
+if key_to_check in products: # search in keys
+    print(f"Key {key_to_check} is present in the list of products")
+else:
+    print(f"Key {key_to_check} is not present in the list of products")
+
+print("----------------")
+# get keys from a dictionary
+for key in products.keys():
+    print(key)
+# get values from a dictionary
+for value in products.values():
+    print(value)
+# iterate a dictionary
+for key in products.keys():
+    print(f"{key} : {products[key]}")
+
+print("----------------")
+
+for key , value in products.items():
+    print(f"{key} : {value}")

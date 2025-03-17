@@ -20,3 +20,13 @@ print("-------------")
 print(f"first_student : {first_student}")
 print(f"second_student : {second_student}")
 print(f"third_student : {third_student}")
+
+
+# students = ("Alice" , "Bob" , "Charlie")
+
+students = list(students) # convert to list
+students[0] = "Alec" # update the zero index
+students = tuple(students) # convert to tuple
+
+students = list(students)
+print(students)

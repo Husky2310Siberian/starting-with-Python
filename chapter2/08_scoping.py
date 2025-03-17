@@ -10,6 +10,9 @@ for _ in range(10):
 # random_numbers.sort()
 print(random_numbers)
 
+# num is defined inside the loop, but in Python, variables inside a loop do not have block scope,
+# this means after the loop finishes, num will still exist in the global scope,
+# storing the last randomly generated number.
 for num in random_numbers:
     if num % 2 == 0:
         even = num

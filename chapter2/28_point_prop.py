@@ -1,57 +1,59 @@
-import math
-
 class Point:
-    """
-    A class representing a point in 2D space.
-
-    Attributes:
-        x (float): The x-coordinate of the point.
-        y (float): The y-coordinate of the point.
-    """
+    __count = 0  # Class-level private attribute to track instances
 
     def __init__(self, x=0, y=0):
-        """
-        Initialize a Point object with the specified x and y coordinates.
-
-        Args:
-            x (float): The x-coordinate of the point. Defaults to 0.
-            y (float): The y-coordinate of the point. Defaults to 0.
-        """
-        self.x = x
-        self.y = y
+        self.__x = x  # Private instance attribute
+        self.__y = y  # Private instance attribute
+        Point.__count += 1  # Increment instance count
 
     def __str__(self):
-        """
-        Return a string representation of the Point object.
+        return f"({self.__x}, {self.__y})"  # String representation
 
-        Returns:
-            str: A string representation of the Point object in the format (x, y).
-        """
-        return f"({self.x}, {self.y})"
+    def __repr__(self):
+        return f"Point(x={self.__x},y={self.__y})"  # Debug representation
 
-    def distance_to(self, other):
-        """
-        Calculate the Euclidean distance between this point and another point.
+    def __eq__(self, other):
+        if isinstance(other, Point):
+            return self.__x == other.__x and self.__y == other.__y  # Equality check
+        else:
+            return False
 
-        Args:
-            other (Point): Another Point object to calculate the distance to.
+    def __lt__(self, other):
+        if isinstance(other, Point):
+            return (self.__x <= other.__x and self.__y < other.__y) \
+                    or (self.__x < other.__x and self.__y <= other.__y)  # Comparison
+        else:
+            return False
 
-        Returns:
-            float: The Euclidean distance between the two points.
-        """
-        return math.sqrt(math.pow(self.x - other.x, 2) + math.pow(self.y - other.y, 2))
+    @classmethod
+    def get_count(cls):
+        return cls.__count  # Class method to get instance count
 
+    # Properties for `x`
+    @property
+    def x(self):
+        return self.__x
+
+    @x.setter
+    def x(self, x):
+        self.__x = x
+
+    # Properties for `y`
+    @property
+    def y(self):
+        return self.__y
+
+    @y.setter
+    def y(self, y):
+        self.__y = y
+
+
+# Main function to demonstrate usage
 def main():
-    p1 = Point(10, 20)
-    p2 = Point(30, 40)
-    print(f"Point 1: {p1}")
-    print(f"Point 2: {p2}")
-    print(f"Distance between points: {p1.distance_to(p2)}")
+    p1 = Point(11, 20)
+    p2 = Point(11, 20)
 
-    # Updating the point coordinates directly
-    p1.x = 15
-    p1.y = 25
-    print(f"Updated p1: {p1}")
+    print(p1 < p2)  # Demonstrating overloaded `<` operator
 
 if __name__ == "__main__":
     main()

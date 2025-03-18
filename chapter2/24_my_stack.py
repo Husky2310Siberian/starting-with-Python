@@ -41,7 +41,7 @@ def main():
         if choice == 'q' or choice == 'Q':
             break
 
-        pattern = r"^\d$"
+        pattern = r"^\d$"   # (0 - 9)
         valid = re.match(pattern, choice)
 
         if not valid:
